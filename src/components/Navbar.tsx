@@ -14,6 +14,19 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavClick = (href: string) => {
+    setIsOpen(false);
+    if (href.startsWith("#")) {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+      else navigate("/" + href);
+    } else {
+      navigate(href);
+      window.scrollTo(0, 0);
+    }
+  };
 
   return (
     <>
