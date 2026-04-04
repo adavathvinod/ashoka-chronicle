@@ -85,28 +85,26 @@ const Navbar = () => {
 
             <nav className="flex flex-col items-center gap-8">
               {navLinks.map((link, i) => (
-                <motion.a
+                <motion.button
                   key={link.label}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => handleNavClick(link.href)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="font-heading text-4xl md:text-5xl text-cream hover:text-gold transition-colors"
+                  className="font-heading text-4xl md:text-5xl text-cream hover:text-gold transition-colors bg-transparent border-none cursor-pointer"
                 >
                   {link.label}
-                </motion.a>
+                </motion.button>
               ))}
-              <motion.a
-                href="#enquire"
-                onClick={() => setIsOpen(false)}
+              <motion.button
+                onClick={() => handleNavClick("/admissions")}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.1 }}
-                className="mt-8 px-10 py-4 bg-primary text-primary-foreground font-body text-lg font-semibold tracking-wider uppercase rounded-sm"
+                className="mt-8 px-10 py-4 bg-primary text-primary-foreground font-body text-lg font-semibold tracking-wider uppercase rounded-sm cursor-pointer border-none"
               >
                 Apply Now
-              </motion.a>
+              </motion.button>
             </nav>
           </motion.div>
         )}
