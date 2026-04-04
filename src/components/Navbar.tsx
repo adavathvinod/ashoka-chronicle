@@ -4,11 +4,11 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/asb-logo.png";
 
 const navLinks = [
-  { label: "About Us", href: "#about" },
+  { label: "About Us", href: "/about" },
   { label: "Why BBA", href: "#why-bba" },
   { label: "Advantages", href: "#advantages" },
-  { label: "Campus", href: "#campus" },
-  { label: "Recruiters", href: "#recruiters" },
+  { label: "Admissions", href: "/admissions" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
