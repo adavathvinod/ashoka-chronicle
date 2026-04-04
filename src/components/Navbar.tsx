@@ -49,12 +49,12 @@ const Navbar = () => {
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
-            <a href="#enquire" className="font-body text-sm font-semibold tracking-wider uppercase text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+            <button onClick={() => handleNavClick("/contact")} className="font-body text-sm font-semibold tracking-wider uppercase text-primary-foreground/80 hover:text-primary-foreground transition-colors bg-transparent border-none cursor-pointer">
               Inquire
-            </a>
-            <a href="#enquire" className="px-6 py-2.5 bg-primary text-primary-foreground font-body text-sm font-semibold tracking-wider uppercase rounded-sm hover:bg-accent transition-colors">
+            </button>
+            <button onClick={() => handleNavClick("/admissions")} className="px-6 py-2.5 bg-primary text-primary-foreground font-body text-sm font-semibold tracking-wider uppercase rounded-sm hover:bg-accent transition-colors cursor-pointer">
               Apply Now
-            </a>
+            </button>
           </div>
 
           <button
