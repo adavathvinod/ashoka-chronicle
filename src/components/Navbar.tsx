@@ -1,18 +1,32 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/asb-logo.png";
 
 const navLinks = [
-  { label: "About Us", href: "#about" },
+  { label: "About Us", href: "/about" },
   { label: "Why BBA", href: "#why-bba" },
   { label: "Advantages", href: "#advantages" },
-  { label: "Campus", href: "#campus" },
-  { label: "Recruiters", href: "#recruiters" },
+  { label: "Admissions", href: "/admissions" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavClick = (href: string) => {
+    setIsOpen(false);
+    if (href.startsWith("#")) {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+      else navigate("/" + href);
+    } else {
+      navigate(href);
+      window.scrollTo(0, 0);
+    }
+  };
 
   return (
     <>
@@ -24,23 +38,23 @@ const Navbar = () => {
 
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.label}
-                href={link.href}
-                className="font-body text-sm font-medium tracking-widest uppercase text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                onClick={() => handleNavClick(link.href)}
+                className="font-body text-sm font-medium tracking-widest uppercase text-primary-foreground/80 hover:text-primary-foreground transition-colors bg-transparent border-none cursor-pointer"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
-            <a href="#enquire" className="font-body text-sm font-semibold tracking-wider uppercase text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+            <button onClick={() => handleNavClick("/contact")} className="font-body text-sm font-semibold tracking-wider uppercase text-primary-foreground/80 hover:text-primary-foreground transition-colors bg-transparent border-none cursor-pointer">
               Inquire
-            </a>
-            <a href="#enquire" className="px-6 py-2.5 bg-primary text-primary-foreground font-body text-sm font-semibold tracking-wider uppercase rounded-sm hover:bg-accent transition-colors">
+            </button>
+            <button onClick={() => handleNavClick("/admissions")} className="px-6 py-2.5 bg-primary text-primary-foreground font-body text-sm font-semibold tracking-wider uppercase rounded-sm hover:bg-accent transition-colors cursor-pointer">
               Apply Now
-            </a>
+            </button>
           </div>
 
           <button
@@ -71,28 +85,26 @@ const Navbar = () => {
 
             <nav className="flex flex-col items-center gap-8">
               {navLinks.map((link, i) => (
-                <motion.a
+                <motion.button
                   key={link.label}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => handleNavClick(link.href)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="font-heading text-4xl md:text-5xl text-cream hover:text-gold transition-colors"
+                  className="font-heading text-4xl md:text-5xl text-cream hover:text-gold transition-colors bg-transparent border-none cursor-pointer"
                 >
                   {link.label}
-                </motion.a>
+                </motion.button>
               ))}
-              <motion.a
-                href="#enquire"
-                onClick={() => setIsOpen(false)}
+              <motion.button
+                onClick={() => handleNavClick("/admissions")}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.1 }}
-                className="mt-8 px-10 py-4 bg-primary text-primary-foreground font-body text-lg font-semibold tracking-wider uppercase rounded-sm"
+                className="mt-8 px-10 py-4 bg-primary text-primary-foreground font-body text-lg font-semibold tracking-wider uppercase rounded-sm cursor-pointer border-none"
               >
                 Apply Now
-              </motion.a>
+              </motion.button>
             </nav>
           </motion.div>
         )}
