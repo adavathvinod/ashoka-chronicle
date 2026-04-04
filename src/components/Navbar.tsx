@@ -38,13 +38,13 @@ const Navbar = () => {
 
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.label}
-                href={link.href}
-                className="font-body text-sm font-medium tracking-widest uppercase text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                onClick={() => handleNavClick(link.href)}
+                className="font-body text-sm font-medium tracking-widest uppercase text-primary-foreground/80 hover:text-primary-foreground transition-colors bg-transparent border-none cursor-pointer"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </nav>
 
