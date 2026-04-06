@@ -5,7 +5,7 @@ import recruiters3 from "@/assets/recruiters-3.png";
 
 const RecruitersSection = () => {
   return (
-    <section id="recruiters" className="py-24 md:py-32 bg-background overflow-hidden">
+    <section id="recruiters" className="py-24 md:py-32 bg-background overflow-x-hidden">
       <div className="container mx-auto px-6">
         <ScrollReveal>
           <div className="text-center mb-16">
@@ -17,7 +17,7 @@ const RecruitersSection = () => {
         </ScrollReveal>
 
         {/* Marquee rows */}
-        <div className="space-y-6">
+        <div className="space-y-6 overflow-x-hidden">
           {[recruiters1, recruiters2, recruiters3].map((img, i) => (
             <div key={i} className="overflow-hidden">
               <div className="animate-marquee flex" style={{ animationDirection: i % 2 === 0 ? 'normal' : 'reverse' }}>

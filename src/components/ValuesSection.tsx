@@ -38,7 +38,7 @@ const ValuesSection = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   return (
-    <section className="bg-charcoal">
+    <section className="bg-charcoal overflow-x-hidden">
       {/* Desktop horizontal scroll */}
       <div ref={containerRef} className="hidden md:block relative h-[300vh]">
         <div className="sticky top-0 h-screen overflow-hidden flex items-center">
@@ -48,7 +48,7 @@ const ValuesSection = () => {
               Ethics That Define<br /><span className="italic text-gold">BBA Visionaries</span>
             </h2>
           </div>
-          <motion.div style={{ x }} className="flex gap-8 pl-8 pr-[50vw]" >
+          <motion.div style={{ x }} className="flex gap-8 pl-8" >
             {values.map((value, i) => (
               <div
                 key={value.title}
